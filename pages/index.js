@@ -25,14 +25,16 @@ function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <img src='topo.png'></img>
+      <div className={styles.topo}>
+        <img src='topo.png'></img>
+      </div>
 
       <div className={styles.logo}>
         <img src='logo.png'></img>
       </div>
 
       <div className={styles.button}>
-        <button>Veja todos os personagens</button>
+        <button>Veja todos <br />os personagens</button>
       </div>
 
       <div className={styles.logo2}>

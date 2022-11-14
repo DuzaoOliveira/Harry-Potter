@@ -7,13 +7,38 @@
   width: 1279px;
 }
 
-/* .logo {
-margin-top: ;
+.logo {
+  width: 400px;
+  margin-top: 70px;
+  margin-left: 65px;
+}
+
+.button button {
+  text-transform: uppercase;
+  background-color: #a8945c;
+  width: 210px;
+  height: 59px;
+  border-radius: 8px;
+  margin-top: 50px;
+  margin-left: 110px;
+  font-family: Arial;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 21px;
+  letter-spacing: 0em;
+  text-align: center;
+
+
+}
+
+
+/* .topo {
+  width: 1280px;
 } */
 
 .logo2 {
   display: flex;
-  margin-top: 280px;
+  margin-top: 124px;
   margin-left: 50px;
 }
 
@@ -21,18 +46,23 @@ margin-top: ;
 .logo2 p {
   font-size: 30px;
   color: #a8945c;
+  margin-left: 16px;
+  margin-top: 6px;
 }
 
-/* 
+
 .logo22 {
-  margin-top: 5px;
-} */
+  margin-bottom: 5px;
+  margin-top: -4px;
+}
+
 
 .linha img {
-  width: 800px;
+  width: 785px;
   height: 3px;
   color: #a8945c;
-  margin-left: 90px;
+  margin-left: 48px;
+  margin-top: 25px;
 }
 
 .cards {
