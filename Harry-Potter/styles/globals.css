@@ -1,0 +1,23 @@
+html,
+body {
+  max-width: 1920px;
+  min-width: 960px;
+  margin: 0 auto;
+  width: 100%;
+  background: #041b29;
+}
+
+* {
+  margin: 0;
+}
+
+
+/* @media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
+  body {
+    color: white;
+    background: black;
+  }
+} */
