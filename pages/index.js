@@ -1,20 +1,9 @@
 import Head from 'next/head'
-import { useState } from 'react'
+// import { useState } from 'react'
 import styles from '../styles/Home.module.css'
 import axios from 'axios';
 
 function Home() {
-
-  const [todos, setTodos] = useState('');
-
-  const harryPotter = (name) => {
-    setIsOpen(true);
-    axios.get(`https://hp-api.herokuapp.com/api/characters/${name}`)
-      .then((preview) => {
-        setTodos(preview.data);
-        console.log(todos,)
-      })
-  }
 
   return (
     <div className={styles.container}>
@@ -34,7 +23,9 @@ function Home() {
       </div>
 
       <div className={styles.button}>
-        <button>Veja todos <br />os personagens</button>
+        <button onClick={() => window.location.href = '/personagens'}>
+          Veja todos <br />os personagens
+        </button>
       </div>
 
       <div className={styles.logo2}>
@@ -56,10 +47,6 @@ function Home() {
         <img src='lufa-lufa.png'></img>
         <img src='corvinal.png'></img>
       </div>
-
-
-
-
     </div>
   )
 }
