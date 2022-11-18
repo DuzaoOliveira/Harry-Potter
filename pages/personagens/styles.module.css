@@ -44,7 +44,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  width: 100%;
+  /* width: 100%; */
   margin-top: 8px;
 
 }
@@ -52,6 +52,21 @@
 .boxcard p {
   color: aqua;
   align-content: flex-end;
+}
+
+/* 
+.todos p {
+  display: flex;
+  flex-wrap: ;
+} */
+
+.nome p {
+  text-align: center;
+  color: #a8945c;
+  font-family: Arial;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 28px;
 }
 
 .boxcard img {
