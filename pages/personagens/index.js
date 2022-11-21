@@ -11,15 +11,8 @@ function Persongens() {
 
   const [resposta, setResposta] = useState();
   const [modalIsOpen, setIsOpen] = useState(false);
-  const [valores, setValores] = useState();
+  const [personagemAtual, setPersonagemAtual] = useState({});
 
-  function openModal() {
-    setIsOpen(true);
-  }
-
-  function closeModal() {
-    setIsOpen(false);
-  }
 
   useEffect(() => {
     axios
@@ -49,7 +42,7 @@ function Persongens() {
 
   const handleOpenModal = (personagem) => {
     setPersonagemAtual(personagem);
-    setModalIsOpen(true)
+    setIsOpen(true)
   };
 
 
@@ -77,6 +70,8 @@ function Persongens() {
 
         <p>Personagens</p>
 
+
+
         <div className={styles.linha}>
           <img src='topo.png'></img>
         </div>
@@ -85,51 +80,58 @@ function Persongens() {
 
       <div className={styles.boxcard}>
 
-        {resposta?.map((personagens,) => {
+        {resposta?.map((personagens) => {
           return (
 
-            <><Modal>
-
-            </Modal>
-
-              <div className={styles.card} onClick={() => escolherPersonagem(personagens.name)}>
-
-
+            <>
+              <div onClick={handleOpenModal}>
                 <div className={styles.nome}>
                   <div className={styles.todos}>
-                    <img src={personagens.image}></img>
+                    <img onClick={handleOpenModal} src={personagens.image}></img>
                   </div>
 
                   <p>{personagens.name}</p>
                 </div>
-              </div></>
+              </div>
+            </>
+
           );
 
         })}
       </div>
 
-      {/* {valores &&
-        <Modal
-          nome={valores?.name}
-          species={valores.types && valores?.types[0]?.type?.name}
-          gender={valores.stats && valores?.stats[0].base_stat}
-          house={valores.stats && valores?.stats[1].base_stat}
-          dateOfBirth={valores.stats && valores?.stats[2].base_stat}
-          patronus={valores.stats && valores?.stats[3].base_stat}
-          wood={valores.stats && valores?.stats[4].base_stat}
-          length={valores.stats && valores?.stats[5].base_stat}
-          core={valores.stats && valores?.stats[6].base_stat}
-          ancestry={valores.stats && valores?.stats[7].base_stat}
-          actor={valores.stats && valores?.stats[8].base_stat}
-          imagem={
-            <img src={personagens.image}></img>
-          }
-          setIsOpen={setIsOpen}
-          isOpen={isOpen}
-        />
-      } */}
+      {modalIsOpen && (
+        <div className={styles.modal}>
 
-    </div>
+          <Modal
+            isOpen={modalIsOpen}
+            onRequestClose={handleOpenModal}
+
+            img={resposta && resposta?.image ? resposta?.image : 'sem imagem'}
+            name={resposta && resposta?.name ? resposta?.name : 'Desconhecido'}
+            house={resposta?.house}
+            species={resposta?.species}
+            dateOfBirthe={resposta?.dateOfBirth}
+            gender={resposta?.gender}
+            patronus={resposta?.patronus}
+            wand={resposta?.wand}
+            wood={resposta?.wand?.wood}
+            core={resposta?.core}
+            length={resposta?.wand?.length}
+            ancestry={resposta?.ancestry}
+            actor={resposta?.actor}
+            setIsOpen={setIsOpen}
+            modalIsOpen={modalIsOpen}
+          />
+        </div>
+      )}
+
+
+
+
+
+
+    </div >
   )
 
 }
