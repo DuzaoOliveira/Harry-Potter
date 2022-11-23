@@ -2,13 +2,13 @@
   width: 1345px;
   margin: 0 auto;
   background-image: url('/background_1.png');
-
-
 }
 
 .modal {
   display: flex;
+  flex-wrap: wrap;
   position: absolute;
+  position: fixed;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
@@ -16,10 +16,59 @@
   width: 704px;
   background-color: #171717;
   cursor: pointer;
+  border-radius: 10px;
 }
 
-.modal p {
+.modal img {
+  height: 356px;
+  width: 256px;
+  /* left: 2972px; */
+  top: 18px;
+  border-style: groove;
+  border-color: #a8945c;
+  margin: -8px 0px 38px 50px;
+}
+
+.close button {
+  width: 26px;
+  height: 26px;
+  margin-left: 653px;
+  margin-top: 25px;
+  border-radius: 50%;
+  background: #A6955A;
+  border: none;
+}
+
+.caracters p {
+  font-family: Arial;
+  font-size: 16px;
+  color: #A6955A;
+  margin-left: 50px;
+  padding: 3px;
+  text-transform: capitalize;
+  line-height: 23px;
+  padding: 5px;
+}
+
+.caracters p span {
   color: #fff;
+  margin-left: 4px;
+}
+
+.caracters li {
+  color: #A6955A;
+  text-transform: capitalize;
+  margin-left: 50px;
+  list-style: none;
+}
+
+.caracters li span {
+  color: #fff;
+  margin-left: 4px;
+}
+
+.span {
+  color: #A6955A;
 }
 
 .topo img {

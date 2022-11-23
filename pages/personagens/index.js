@@ -5,13 +5,13 @@ import styles from './styles.module.css';
 import axios from "axios";
 import Head from 'next/head';
 
-// Modal.setAppElement('#root');
 
 function Persongens() {
 
   const [resposta, setResposta] = useState();
   const [modalIsOpen, setIsOpen] = useState(false);
-  const [personagemAtual, setPersonagemAtual] = useState({});
+  const [personagemAtual, setPersonagemAtual] = useState();
+  console.log(personagemAtual, 'personagensss')
 
 
   useEffect(() => {
@@ -21,24 +21,11 @@ function Persongens() {
         setResposta(response.data);
         console.log(resposta, 'resposta')
       });
-  }, [resposta]);
+  }, []);
 
   const handleClick = () => {
     window.location.href = "/";
   };
-
-  const escolherPersonagem = (personagem) => {
-    setResposta(true);
-    axios
-      .get(
-        `https://hp-api.herokuapp.com/api/characters/${personagem}`,
-      )
-      .then((response) => {
-        setResposta(response?.data.results);
-        setIsOpen(true);
-      })
-
-  }
 
   const handleOpenModal = (personagem) => {
     setPersonagemAtual(personagem);
@@ -80,17 +67,19 @@ function Persongens() {
 
       <div className={styles.boxcard}>
 
-        {resposta?.map((personagens) => {
+
+
+        {resposta && Object.values(resposta).map((personagem) => {
           return (
 
             <>
-              <div onClick={handleOpenModal}>
+              <div onClick={() => handleOpenModal(personagem)}>
                 <div className={styles.nome}>
                   <div className={styles.todos}>
-                    <img onClick={handleOpenModal} src={personagens.image}></img>
+                    <img src={personagem.image} />
                   </div>
 
-                  <p>{personagens.name}</p>
+                  <p>{personagem.name}</p>
                 </div>
               </div>
             </>
@@ -104,25 +93,23 @@ function Persongens() {
         <div className={styles.modal}>
 
           <Modal
-            isOpen={modalIsOpen}
-            onRequestClose={handleOpenModal}
-
-            img={resposta && resposta?.image ? resposta?.image : 'sem imagem'}
-            name={resposta && resposta?.name ? resposta?.name : 'Desconhecido'}
-            house={resposta?.house}
-            species={resposta?.species}
-            dateOfBirthe={resposta?.dateOfBirth}
-            gender={resposta?.gender}
-            patronus={resposta?.patronus}
-            wand={resposta?.wand}
-            wood={resposta?.wand?.wood}
-            core={resposta?.core}
-            length={resposta?.wand?.length}
-            ancestry={resposta?.ancestry}
-            actor={resposta?.actor}
+            img={personagemAtual?.image ? personagemAtual?.image : 'sem imagem'}
+            name={personagemAtual?.name ? personagemAtual?.name : 'Desconhecido'}
+            house={personagemAtual?.house ? personagemAtual?.house : 'Desconhecido'}
+            species={personagemAtual?.species ? personagemAtual?.species : 'Desconhecido'}
+            dateOfBirth={personagemAtual?.dateOfBirth ? personagemAtual?.dateOfBirth : 'Desconhecido'}
+            gender={personagemAtual?.gender ? personagemAtual?.gender : 'Desconhecido'}
+            patronus={personagemAtual?.patronus ? personagemAtual?.patronus : 'Desconhecido'}
+            wood={personagemAtual?.wand?.wood ? personagemAtual?.wand.wood : 'Desconhecido'}
+            core={personagemAtual?.wand?.core ? personagemAtual?.wand?.core : 'Desconhecido'}
+            length={personagemAtual?.wand?.length ? personagemAtual?.wand.length : 'Desconhecido'}
+            ancestry={personagemAtual?.ancestry ? personagemAtual?.ancestry?.ancestry : 'Desconheicdo'}
+            actor={personagemAtual?.actor ? personagemAtual?.actor : 'Desconhecido'}
             setIsOpen={setIsOpen}
             modalIsOpen={modalIsOpen}
+            handleClose={() => modalIsOpen(false)} personagemAtual={personagemAtual}
           />
+
         </div>
       )}
 

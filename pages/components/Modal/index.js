@@ -1,8 +1,5 @@
-/* eslint-disable @next/next/no-img-element */
 import React from 'react'
-import styles from '../Modal'
-import Persongens from './../../personagens/index';
-
+import styles from '../../personagens/styles.module.css'
 
 const handleClose = () => {
   window.location.href = "/personagens";
@@ -13,22 +10,34 @@ const Modal = ({ name, house, species, gender, dateOfBirth, patronus, wand, wood
 }) => {
 
   return (
+
     <div className={styles.modal}>
-      <button onClick={handleClose}>X</button>
+
+      <div className={styles.close}>
+        <button onClick={() => handleClose(true)}>X</button>
+      </div>
+
+
       <img src={img} />
-      <p>Nome:{name}</p>
-      <p>Casa:{house}</p>
-      <p>Espécie:{species}</p>
-      <p>Data de nascimento:{dateOfBirth}</p>
-      <p>Gênero:{gender}</p>
-      <p>Patrono:{patronus}</p>
-      <p>Varinha:{wand}</p>
-      <p>-Madeira:{wood}</p>
-      <p>-Núcleo:{core}</p>
-      <p>-Comprimento:{length}</p>
-      <p>Ancestralidade:{ancestry}</p>
-      <p>Ator:{actor}</p>
+
+      <div className={styles.caracters}>
+        <p>Nome: <span>{name}</span></p>
+        <p>Casa:<span>{house}</span></p>
+        <p>Espécie:<span>{species}</span></p>
+        <p>Data de nasc:<span>{dateOfBirth}</span></p>
+        <p>Gênero:<span>{gender}</span></p>
+        <p>Patrono:<span>{patronus}</span></p>
+        <li>
+          <p>Varinha:<span>{wand}</span></p>
+          <li>-Madeira:<span>{wood}</span></li>
+          <li>-Núcleo:<span>{core}</span></li>
+          <li>-Comprimento:<span>{length}</span></li>
+        </li>
+        <p>Ancestralidade:<span>{ancestry}</span></p>
+        <p>Ator:<span>{actor}</span></p>
+      </div>
     </div>
+
   )
 }
 

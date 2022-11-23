@@ -3,7 +3,18 @@ import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 import axios from 'axios';
 
+
 function Home() {
+
+  // const params = new URLSearchParams(window.location.search);
+  // let urlParams = undefined;
+  // params.forEach((value, key) => {
+  //   urlParams = Object.assign({}, urlParams, {
+  //     [key]: value.toString()
+  //   });
+  // });
+
+
 
   return (
     <div className={styles.container}>
@@ -42,7 +53,7 @@ function Home() {
       </div>
 
       <div className={styles.cards}>
-        <img src='grifinoria.png'></img>
+        <img a href src='grifinoria.png'></img>
         <img src='sonserina.png'></img>
         <img src='lufa-lufa.png'></img>
         <img src='corvinal.png'></img>
