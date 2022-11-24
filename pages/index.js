@@ -1,20 +1,7 @@
 import Head from 'next/head'
-// import { useState } from 'react'
 import styles from '../styles/Home.module.css'
-import axios from 'axios';
-
 
 function Home() {
-
-  // const params = new URLSearchParams(window.location.search);
-  // let urlParams = undefined;
-  // params.forEach((value, key) => {
-  //   urlParams = Object.assign({}, urlParams, {
-  //     [key]: value.toString()
-  //   });
-  // });
-
-
 
   return (
     <div className={styles.container}>
@@ -34,7 +21,7 @@ function Home() {
       </div>
 
       <div className={styles.button}>
-        <button onClick={() => window.location.href = '/personagens'}>
+        <button onClick={() => window.location.href = '/personagens?house=all'}>
           Veja todos <br />os personagens
         </button>
       </div>
@@ -53,10 +40,10 @@ function Home() {
       </div>
 
       <div className={styles.cards}>
-        <img a href src='grifinoria.png'></img>
-        <img src='sonserina.png'></img>
-        <img src='lufa-lufa.png'></img>
-        <img src='corvinal.png'></img>
+        <img onClick={() => window.location.href = '/personagens?house=gryffindor'} src='grifinoria.png'></img>
+        <img onClick={() => window.location.href = '/personagens?house=ravenclaw'} src='sonserina.png'></img>
+        <img onClick={() => window.location.href = '/personagens?house=hufflepuff'} src='lufa-lufa.png'></img>
+        <img onClick={() => window.location.href = '/personagens?house=slytherin'} src='corvinal.png'></img>
       </div>
     </div>
   )

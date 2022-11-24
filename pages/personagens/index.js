@@ -11,17 +11,38 @@ function Persongens() {
   const [resposta, setResposta] = useState();
   const [modalIsOpen, setIsOpen] = useState(false);
   const [personagemAtual, setPersonagemAtual] = useState();
+  const [house, setHouse] = useState()
+  const defound = 'https://i.pinimg.com/236x/68/8b/6e/688b6e5e058d5e71c652b781147006cc.jpg'
   console.log(personagemAtual, 'personagensss')
 
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const params = new URLSearchParams(window.location.search);
+      let urlParams = undefined;
+      params.forEach((value, key) => {
+        urlParams = Object.assign({}, urlParams, {
+          [key]: value.toString().replace("house=", ""),
+        });
+      });
+      setHouse(urlParams?.house);
+    }
+  }, []);
+
+
+
+  const baseURL = "https://hp-api.herokuapp.com/api/characters";
 
   useEffect(() => {
-    axios
-      .get('https://hp-api.herokuapp.com/api/characters')
-      .then((response) => {
-        setResposta(response.data);
-        console.log(resposta, 'resposta')
-      });
-  }, []);
+    if (house) {
+      if (house === "all") {
+        axios.get(baseURL).then((response) => setResposta(response.data));
+      } else {
+        axios
+          .get(baseURL + `/house/${house}`)
+          .then((response) => setResposta(response.data));
+      }
+    }
+  }, [house]);
 
   const handleClick = () => {
     window.location.href = "/";
@@ -30,6 +51,24 @@ function Persongens() {
   const handleOpenModal = (personagem) => {
     setPersonagemAtual(personagem);
     setIsOpen(true)
+  };
+
+  const houses = () => {
+    switch (house) {
+      case "all":
+        return "PERSONAGENS";
+      case "gryffindor":
+        return "Grifinória";
+      case "hufflepuff":
+        return "Lufa-Lufa";
+      case "ravenclaw":
+        return "Corvinal";
+      case "slytherin":
+        return "Sonserina";
+
+      default:
+        "Desconhecido";
+    }
   };
 
 
@@ -55,7 +94,7 @@ function Persongens() {
 
         <img src="logo2.png"></img>
 
-        <p>Personagens</p>
+        <p>{houses()}</p>
 
 
 
@@ -76,7 +115,7 @@ function Persongens() {
               <div onClick={() => handleOpenModal(personagem)}>
                 <div className={styles.nome}>
                   <div className={styles.todos}>
-                    <img src={personagem.image} />
+                    <img src={personagem.image !== "" ? personagem.image : defound} />
                   </div>
 
                   <p>{personagem.name}</p>
@@ -93,7 +132,7 @@ function Persongens() {
         <div className={styles.modal}>
 
           <Modal
-            img={personagemAtual?.image ? personagemAtual?.image : 'sem imagem'}
+            img={personagemAtual?.image ? personagemAtual?.image : defound}
             name={personagemAtual?.name ? personagemAtual?.name : 'Desconhecido'}
             house={personagemAtual?.house ? personagemAtual?.house : 'Desconhecido'}
             species={personagemAtual?.species ? personagemAtual?.species : 'Desconhecido'}
@@ -107,7 +146,7 @@ function Persongens() {
             actor={personagemAtual?.actor ? personagemAtual?.actor : 'Desconhecido'}
             setIsOpen={setIsOpen}
             modalIsOpen={modalIsOpen}
-            handleClose={() => modalIsOpen(false)} personagemAtual={personagemAtual}
+          // handleClose={() => modalIsOpen(false)} personagemAtual={personagemAtual}
           />
 
         </div>
