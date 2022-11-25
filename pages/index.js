@@ -7,7 +7,7 @@ function Home() {
     <div className={styles.container}>
 
       <Head>
-        <title>Harry Potter</title>
+        <title>Home Harry Potter</title>
         <meta name="description" content="Harry Potter" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
@@ -48,5 +48,6 @@ function Home() {
     </div>
   )
 }
+
 
 export default Home

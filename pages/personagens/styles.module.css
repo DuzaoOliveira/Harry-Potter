@@ -22,7 +22,6 @@
 .modal img {
   height: 356px;
   width: 256px;
-  /* left: 2972px; */
   top: 18px;
   border-style: groove;
   border-color: #a8945c;
@@ -109,9 +108,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  /* width: 100%; */
   margin-top: 8px;
-
 }
 
 .boxcard p {
@@ -119,19 +116,14 @@
   align-content: flex-end;
 }
 
-/* 
-.todos p {
-  display: flex;
-  flex-wrap: ;
-} */
-
 .nome p {
   text-align: center;
   color: #a8945c;
   font-family: Arial;
-  font-size: 24px;
+  font-size: 20px;
   font-weight: 400;
   line-height: 28px;
+  margin-top: -53px;
 }
 
 .boxcard img {
@@ -140,4 +132,70 @@
   width: 171px;
   border-style: groove;
   border-color: #a8945c;
+}
+
+
+@media screen and (max-width: 600px) {
+  .boxcard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .boxcard img {
+    width: 1000px;
+    height: 1250px;
+  }
+
+  .icones {
+    display: flex;
+    justify-content: center;
+  }
+
+  .icones img {
+    width: 110px;
+  }
+
+  .icones p {
+    font-size: 50px;
+  }
+
+  .nome p {
+    font-size: 50px;
+    padding: 8px;
+  }
+
+  .modal {
+    height: 2180px;
+    width: 900px;
+  }
+
+  .modal img {
+    height: 900px;
+    width: 700px;
+    margin-left: 103px;
+  }
+
+  .close button {
+    width: 26px;
+    height: 26px;
+    width: 60px;
+    height: 60px;
+    margin-left: 810px;
+    font-size: 30px;
+  }
+
+  .caracters p {
+    text-align: center;
+    font-size: 60px;
+    line-height: 80px;
+    margin-left: 20px;
+  }
+
+  .caracters li {
+    font-size: 60px;
+    margin-left: 100px;
+    line-height: 62px;
+  }
+
 }

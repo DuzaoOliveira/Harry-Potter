@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-no-comment-textnodes */
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Modal from '../components/Modal'
 import styles from './styles.module.css';
 import axios from "axios";
@@ -71,13 +71,28 @@ function Persongens() {
     }
   };
 
+  const ref = useRef(null)
+  const handleClickOutside = (event) => {
+
+    if (ref.current && !ref.current.contains(event.target)) {
+      setIsOpen(false)
+    }
+  }
+
+  useEffect(() => {
+    document.addEventListener('click', handleClickOutside, true)
+    return () => {
+      document.removeEventListener('click', handleClickOutside, true)
+    }
+  }, [])
+
 
   return (
 
     <div className={styles.container}>
 
       <Head>
-        <title>Harry Potter</title>
+        <title>Personagens</title>
         <meta name="description" content="Harry Potter" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
@@ -104,7 +119,7 @@ function Persongens() {
 
       </div>
 
-      <div className={styles.boxcard}>
+      <div className={styles.boxcard} ref={ref} onClick={handleClickOutside} >
 
 
 
@@ -142,7 +157,7 @@ function Persongens() {
             wood={personagemAtual?.wand?.wood ? personagemAtual?.wand.wood : 'Desconhecido'}
             core={personagemAtual?.wand?.core ? personagemAtual?.wand?.core : 'Desconhecido'}
             length={personagemAtual?.wand?.length ? personagemAtual?.wand.length : 'Desconhecido'}
-            ancestry={personagemAtual?.ancestry ? personagemAtual?.ancestry?.ancestry : 'Desconheicdo'}
+            ancestry={personagemAtual?.ancestry ? personagemAtual?.ancestry : 'Desconheicdo'}
             actor={personagemAtual?.actor ? personagemAtual?.actor : 'Desconhecido'}
             setIsOpen={setIsOpen}
             modalIsOpen={modalIsOpen}

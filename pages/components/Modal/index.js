@@ -1,11 +1,7 @@
 import React from 'react'
 import styles from '../../personagens/styles.module.css'
 
-
-const handleClose = true
-
 const Modal = ({ name, house, species, gender, dateOfBirth, patronus, wand, wood, core, length, ancestry, actor, img
-
 
 }) => {
 
@@ -14,9 +10,8 @@ const Modal = ({ name, house, species, gender, dateOfBirth, patronus, wand, wood
     <div className={styles.modal}>
 
       <div className={styles.close}>
-        <button onClick={() => !handleClose}>X</button>
+        <button>X</button>
       </div>
-
 
       <img src={img} />
 

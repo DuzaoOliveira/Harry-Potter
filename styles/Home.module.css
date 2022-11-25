@@ -1,9 +1,11 @@
 .container {
   margin: 0 auto;
-  background-image: url(../pages/../public/topo.png);
   background-image: url(https://github.com/MarcelloFreitasMoraes/Harry-Potter-REACT/blob/main/public/back.png?raw=true);
   background-repeat: no-repeat;
-  height: 1100px;
+  width: 1279px;
+}
+
+.topo img {
   width: 1279px;
 }
 
@@ -73,15 +75,55 @@
   /* margin-top: 300px; */
 }
 
-/* @media (prefers-color-scheme: dark) {
-  .card,
-  .footer {
-    border-color: #222;
+@media screen and (max-width: 600px) {
+  .topo img {
+    height: 60px;
   }
-  .code {
-    background: #111;
-  }
+
   .logo img {
-    filter: invert(1);
+    width: 600px;
+    margin-left: 279px;
   }
-} */
+
+  .linha img {
+    width: 300px;
+    margin-top: 35px;
+  }
+
+  .logo2 {
+    display: flex;
+    justify-content: center;
+  }
+
+  .logo2 img {
+    width: 110px;
+  }
+
+  .logo2 p {
+    font-size: 50px;
+  }
+
+  .button button {
+    margin-left: 50px;
+    width: 500px;
+    height: 100px;
+    font-size: 40px;
+    line-height: 1;
+    margin-left: 394px;
+    margin-top: 60px;
+  }
+
+  .cards {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .cards img {
+    width: 1000px;
+    height: 1250px;
+  }
+
+
+
+}
