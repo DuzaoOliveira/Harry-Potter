@@ -5,7 +5,6 @@ import styles from './styles.module.css';
 import axios from "axios";
 import Head from 'next/head';
 
-
 function Persongens() {
 
   const [resposta, setResposta] = useState();
@@ -13,7 +12,6 @@ function Persongens() {
   const [personagemAtual, setPersonagemAtual] = useState();
   const [house, setHouse] = useState()
   const defound = 'https://i.pinimg.com/236x/68/8b/6e/688b6e5e058d5e71c652b781147006cc.jpg'
-  console.log(personagemAtual, 'personagensss')
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -27,8 +25,6 @@ function Persongens() {
       setHouse(urlParams?.house);
     }
   }, []);
-
-
 
   const baseURL = "https://hp-api.herokuapp.com/api/characters";
 
@@ -86,7 +82,6 @@ function Persongens() {
     }
   }, [])
 
-
   return (
 
     <div className={styles.container}>
@@ -111,8 +106,6 @@ function Persongens() {
 
         <p>{houses()}</p>
 
-
-
         <div className={styles.linha}>
           <img src='topo.png'></img>
         </div>
@@ -121,9 +114,8 @@ function Persongens() {
 
       <div className={styles.boxcard} ref={ref} onClick={handleClickOutside} >
 
-
-
         {resposta && Object.values(resposta).map((personagem) => {
+
           return (
 
             <>
@@ -161,7 +153,6 @@ function Persongens() {
             actor={personagemAtual?.actor ? personagemAtual?.actor : 'Desconhecido'}
             setIsOpen={setIsOpen}
             modalIsOpen={modalIsOpen}
-          // handleClose={() => modalIsOpen(false)} personagemAtual={personagemAtual}
           />
 
         </div>

@@ -76,6 +76,7 @@
 }
 
 @media screen and (max-width: 600px) {
+
   .topo img {
     height: 60px;
   }
